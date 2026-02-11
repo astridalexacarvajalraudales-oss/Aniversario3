@@ -99,23 +99,48 @@ img {
     margin: 10px;
 }
 
-/* INPUT CONTRASEÑA */
-input {
-    padding: 12px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    text-align: center;
+/* CONTRASEÑA BONITA */
+#pantalla-contrasena {
+    display: block;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #ffe6f0, #fff);
+    position: relative;
+    overflow: hidden;
+}
+
+#pantalla-contrasena h1 {
+    color: #c9184a;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+#pantalla-contrasena input {
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 2px solid #c9184a;
+    margin-bottom: 15px;
+}
+
+#pantalla-contrasena button {
+    padding: 12px 26px;
+    font-size: 18px;
+    border-radius: 25px;
+}
+
+#mensajeError {
+    color: red;
+    display: none;
+    margin-top: 10px;
 }
 </style>
 </head>
 
 <body>
-
-<!-- MUSICA -->
-<audio autoplay loop>
-    <source src="musica.mp3" type="audio/mpeg">
-</audio>
 
 <!-- CORAZONES Y TEXTO -->
 <script>
@@ -140,18 +165,19 @@ for (let i = 0; i < 12; i++) {
 }
 </script>
 
-<!-- LOGIN -->
-<div class="pantalla activa" id="login">
-    <h1>💜 Solo para ti 💜</h1>
-    <p>Ingresa la contraseña</p>
-    <input type="password" id="password" placeholder="Contraseña">
-    <br><br>
-    <button onclick="verificar()">Entrar 💌</button>
-    <p id="error" style="color:red; display:none;">Contraseña incorrecta</p>
+<!-- PANTALLA DE CONTRASEÑA -->
+<div id="pantalla-contrasena">
+    <h1>💖 Para vos 💜💖</h1>
+    <input type="password" id="inputContrasena" placeholder="Escribe la contraseña">
+    <button onclick="verificarContrasena()">Entrar</button>
+    <p id="mensajeError">Contraseña incorrecta ❌</p>
 </div>
 
+<!-- EL CONTENIDO -->
+<div id="contenido" style="display:none;">
+
 <!-- PORTADA -->
-<div class="pantalla" id="portada">
+<div class="pantalla activa" id="portada">
     <h1>💖 Feliz aniversario mi amor 💖</h1>
     <p>3 años a tu lado y toda una vida por delante ✨</p>
     <button onclick="mostrar('menu')">Haz clic aquí 💌</button>
@@ -167,7 +193,122 @@ for (let i = 0; i < 12; i++) {
     <button onclick="mostrar('final')">Un mensaje final 💞</button>
 </div>
 
-<!-- (EL RESTO DE TUS SECCIONES QUEDA IGUAL) -->
+<!-- CARTA -->
+<div class="pantalla" id="carta">
+    <h1>Nuestra historia 💕</h1>
+    <div class="carta">
+        <p>
+        Amor mío, aunque hoy estés lejos, mi corazón te ama a cada momento
+        y mi mente te piensa sin descanso. Gracias por estos tres años
+        maravillosos, años llenos de amor, felicidad y muchos besos. Quien
+        diria que Dios iba a juntar dos personas que creen fielmente en un 
+        amor para toda la vida, hasta este punto yo ya estoy mas que convencida
+        de que lo nuestro no es un amor de niño, capricho, o algo pasajero; 
+        se que lo nuestro es amor verdadero, se que perdurará para toda la vida, 
+        que compartiremos cada momneto de nuestras vidas juntos. Para mi ya es 
+        imposible imaginarme una vida donde no estes vos como el amor de mi vida. 
+        Se que no ha sido facil; que en tan poco tiempo hemos pasado cosas que 
+        a otras personas las hubiesen hecho terminar y el hecho de que hoy sigamos
+        aqui, amandonos con toda intensidad define nuestro amor como verdadero. 
+        En estos años he aprendido tantas cosas, pero sobre todo comocí la mejor 
+        vercion de mi, esa version que vos hiciste que saliera, cada bueno y mal 
+        momento que hemos pasado me ha servido para aprendamos juntos y se que 
+        habran muchos mas. La verdad yo nunca imagine que ese dian en el que aquellos
+        dos jivencitos se dieron su primer beso llenos de nervio iba a ser el comienzo
+        de una gran historia, nunca imaginé estar celebrando tres años de estar juntos, 
+        pero si de algo estoy segura es que no me arrepiento de nada.
+        Te amo con tada mi alma mi amor ❤💜
+        </p>
+    </div>
+    <button onclick="mostrar('menu')">⬅ Volver</button>
+</div>
+
+<!-- AGRADECIMIENTO -->
+<div class="pantalla" id="agradecimiento">
+    <h1>Agradecimiento 😘</h1>
+    <div class="carta">
+        <p>
+        Pues hoy quiero decirte Gracias, gracias mi amor, gracias por demostrarme tu amor
+        de tantas maneras, porque me haces sentir amada a cada moento, en cada beso, abrazo,
+        yo siento ese gran amor que vos tenes por mi, gracias escucharme cada vez que lo necesito
+        sin imprtar que sea un tema del que yo te he platicado en repetidas ocaciones nunca me 
+        decis que no, no me reprochas nada y en cambio me ofreces tu apoyo, gracias por preocuparte
+        por mi binestar, por interesarte si estoy o mal tan fisico como emocionalmente, gracias por 
+        tenerme pasiencia porque se que no soy alguien facil, tengo mi caracte y mis defectos, pero
+        vos decidiste amarme con todo y eso, gracias por compartir tu vida conmigo, gracias por incluirme
+        en tu futuro, gracias por pensar en mi, gracias por cada beso, porque siempre que nos vemos me 
+        llenas de besos, nunca me ha faltado un beso o un abrazo y de verdad te digo que AMO esa forma 
+        tan empalagosa de demostrar tu amor, gracias porque siempre me haces sentir hemosa, porque siempre 
+        me decis que me veo linda a pesar de solo andar en pijama, gracias por tus cartas que guardo con 
+        todo mi amor, gracias por cada detalle, gracias por cada vez que me has dado tu sueter para que 
+        yo no aguante frio, gracias por soportar tanto por mi, por decidir quedarte a pesar de todo porque
+        en verdad me has demostrado que me amas y que valgo la pena para vos, gracias porque me haces sentir
+        como la mujer mas perfecta para vos, gracias por regresar a mi casa despues de que te han corrido tantas veces,
+        en fin gracias por absolutamente todo mi amor ❤💜
+        </p>
+    </div>
+    <button onclick="mostrar('menu')">⬅ Volver</button>
+</div>
+
+<!-- MOMENTOS -->
+<div class="pantalla" id="momentos">
+    <h1>Momentos que marcaron mi vida ✨</h1>
+    <div class="carta">
+        <p>
+        Nuestro primer beso claro, eso marco el inicio de nuestro romance, hoy lo recordamos raro verdad jaja
+        pero en su momento nos moriamos de la emocion por habernos besado, recuerdo un dia martes, estabamos 
+        en la iglesia y yo me sentia super mal, yo sali a buscar papel al baño y cuando regreo estas vos en 
+        la puerta me ppreguntaste que me pasaba, me abrasaste, me dijiste que me amabas y me robaste un beso,
+        nunca voy a olvidar ese día, tambien recuerdo un dia que fuimos a ungir Morazán yo andaba en tacones
+        pero ya me dolian los pies entonces me los quité al verme vos te quitastes tus guarashas, me las diste 
+        y me llevaste los zapatos, recuerdo un dia que yo me sentia super mal, vos lo notaste obvio y me 
+        terminaste diciendo que yo soy todo lo que esa bien en esta vida, recuerdo la primera vez que me mandaste
+        flores, eso fue tan pero tan bello, recuerdo la primera vez que e diste flores en persona y me dijiste 
+        "Vi esto y pensé en vos" y no terminaria de decirte todas las cosas que han marcado mi vida ❤️💜
+        </p>
+    </div>
+    <button onclick="mostrar('menu')">⬅ Volver</button>
+</div>
+
+<!-- RECUERDOS -->
+<div class="pantalla" id="recuerdos">
+    <h1>Nuestros recuerdos 📸</h1>
+    <div class="carta">
+        <p>
+        De los momentos mas lindos juntos siempre van a ser todas las veces que servimos juntos en cualquier
+        área de la iglesa, tambien el día que cosinamos juntos por primera vez, coninamos pollo con azucar, 
+        el día que mi mami nos dio permiso de ser novios y estabamos super felices, el día de mi graduación
+        que se que fue super especial para ambos, la primera vez que nos besuqueamos jajaja que rico, el día
+        que fuimos a tío dolmo, que sí, empezó mal, pero fue un dia que compartimos juntos, rescatamos nuestra
+        relacion y lo disfrutamos al maximo, el día de la caminata que si yo se que terminó mal, pero estuvimos 
+        todo el dia juntos y eso fue hermoso, es bello ver como te preocupas tanto porque yo este bien, comoda,
+        y claro el día que te acompañé al aereopuerto, ese día termino riste yo se, pero logramos pasar hasta 
+        el ultimo momento juntos.
+        Todas nuestras fotos y momentos juntos son mi tesoro más grande 💜
+        </p>
+        <img src="Imagenes/foto2.jpg">
+        <img src="Imagenes/foto1.jpg">
+        <img src="Imagenes/foto3.jpg">
+    </div>
+    <button onclick="mostrar('menu')">⬅ Volver</button>
+</div>
+
+<!-- FINAL -->
+<div class="pantalla" id="final">
+    <h1>Te amo mi niño 💜❤️</h1>
+    <div class="carta">
+        <p>
+        Hoy celebramos tres años de muchos mas que vienen, se que lo nuestro perdurará ás allá de la  muerte, 
+        porque este Dios, es Dios nuestro eternomente y para siempre, Él nos guiará aun más allá de la muerte,
+        quiero recordarte que sos lo mejor que me ha pasado, que sos una pureba viviente y de las mas hermosas
+        del amor de Dios en mi vida. Se que seguiremos construyendo esta hermosa historia y que no tendrá fin.
+        Te amo y te amaré por siempre mi niño de ojitos bonitos. Gracias por existir y por amarme.💜❤️
+        </p>
+    </div>
+    <button onclick="mostrar('menu')">⬅ Volver</button>
+</div>
+
+</div> <!-- FIN CONTENIDO -->
 
 <script>
 function mostrar(id) {
@@ -176,18 +317,19 @@ function mostrar(id) {
     document.getElementById(id).classList.add('activa');
 }
 
-function verificar() {
-    const correcta = "teamo123"; // 🔑 CAMBIA AQUÍ LA CONTRASEÑA
-    const input = document.getElementById("password").value;
-
-    if (input === correcta) {
-        document.getElementById("login").classList.remove("activa");
-        document.getElementById("portada").classList.add("activa");
+function verificarContrasena() {
+    let valor = document.getElementById("inputContrasena").value;
+    if(valor === "teamo123") {
+        document.getElementById("pantalla-contrasena").style.display = "none";
+        document.getElementById("contenido").style.display = "block";
     } else {
-        document.getElementById("error").style.display = "block";
+        document.getElementById("mensajeError").style.display = "block";
     }
 }
 </script>
 
 </body>
 </html>
+
+
+
